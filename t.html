@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+    <link rel="icon" href="data/img/tibl.png" />
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link id="theme" rel="stylesheet" href="css/sakura.css" type="text/css">
+    <meta name="viewport" content="width=device-width" content="initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <title>Loading...</title>
+</head>
+<body>
+
+  <nav id="nav"></nav>
+  <div id="content"></div>
+  <footer id="footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/lib/js-yaml.min.js"></script>
+  <script src="js/tibl.js"></script>
+  <script src="data/js/custom.js"></script>
+  <script src="js/config.js"></script>
+
+  <script>
+    let to_render = window.location.search
+    let url = ""
+    if(to_render != "") {
+      let [item_type, item_name] = to_render.substr(1).split('=')
+      console.log(item_type);
+      console.log(item_name);
+      if(item_type == "t") {
+        url = config['siteroot'] + "data/topics/" + item_name + ".md";
+      } else if(item_type == "p") {
+        url = config['siteroot'] + "data/topics/_" + item_name + ".md";
+      } else {
+        url = "404.md";
+      }
+    } else {
+      url = config['siteroot'] + "data/database" + ".md";
+    }
+    render(config['siteroot'] + "data/nav" + ".md", 'nav');
+    render(url, "content", true);
+    render(config['siteroot'] + "data/foot" + ".md", 'footer');
+  </script>
+</body>
+</html>

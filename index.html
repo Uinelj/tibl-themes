@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width" content="initial-scale=1">
+  <link rel="icon" href="data/img/tibl.png" />
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link id="theme" rel="stylesheet" href="css/sakura.css" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <title>Loading..</title>
+</head>
+<body>
+
+  <nav id="nav"></nav>
+  <div id="content"></div>
+  <footer id="footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/lib/js-yaml.min.js"></script>
+  <script src="js/tibl.js"></script>
+  <script src="data/js/custom.js" defer></script>
+  <script src="js/config.js"></script>
+
+  <script>
+    render(config['siteroot'] + "data/nav" + ".md", 'nav');
+    render(config['siteroot'] + "data/index" + ".md", 'content', set_title=true);
+    render(config['siteroot'] + "data/foot" + ".md", 'footer');
+  </script>
+
+</body>
+</html>
